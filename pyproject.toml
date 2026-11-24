@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graphrag-entity-linking"
+version = "0.1.0"
+description = "Multi-hop QA over a synthetic knowledge world: single-shot and iterative RAG vs a knowledge-graph pipeline (mention detection, entity linking with homonyms and aliases, relation extraction, graph traversal), with EL ablations and IR metrics."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Kishor Hange" }]
+dependencies = ["numpy>=1.26", "scikit-learn>=1.4"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+plots = ["matplotlib>=3.8"]
+anthropic = ["anthropic>=0.40"]
+
+[project.scripts]
+kgrag = "kgrag.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
